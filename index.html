@@ -25,6 +25,17 @@
     display: block;
   }
 
+  h1 {
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
   button {
     margin-top: 30px;
     background: black;
@@ -43,15 +54,46 @@
 </style>
 
 <script>
+  let intentos = 0;
+
+  // PUEDES CAMBIAR O AGREGAR CÓDIGOS AQUÍ
+  const codigosValidos = ["MAYA", "ARCHIVOS", "SECRETO", "A"];
+
+  const mensajes = [
+    "No debiste volver aquí.<br>— A",
+    "Te estoy observando.<br>— A",
+    "Sabes exactamente lo que hiciste.<br>— A",
+    "Creíste que nadie lo notaría?<br>— A",
+    "Algunos secretos no te pertenecen.<br>— A",
+    "Esto no ha terminado.<br>— A"
+  ];
+
   function pedirCodigo() {
     let codigo = prompt("Introduce el código");
 
-    if (codigo === "MAYA") {
+    if (
+      codigo &&
+      codigosValidos.includes(codigo.trim().toUpperCase())
+    ) {
       document.querySelector(".pantalla-falsa").style.display = "none";
       document.querySelector(".contenedor").style.display = "block";
     } else {
-      document.body.innerHTML =
-        "<h2 style='margin-top:150px;'>Acceso denegado</h2>";
+      intentos++;
+
+      let mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
+
+      document.querySelector(".pantalla-falsa").innerHTML = `
+        <h1>ARCHIVOS</h1>
+        <p>${mensaje}</p>
+        <button onclick="pedirCodigo()">INTENTAR DE NUEVO</button>
+      `;
+
+      if (intentos >= 3) {
+        document.querySelector(".pantalla-falsa").innerHTML = `
+          <h1>ARCHIVOS</h1>
+          <p>Ya sabes demasiado.<br>— A</p>
+        `;
+      }
     }
   }
 </script>
@@ -59,14 +101,14 @@
 
 <body>
 
-<!-- PANTALLA FALSA -->
+<!-- PANTALLA INICIAL -->
 <div class="pantalla-falsa">
   <h1>ARCHIVOS</h1>
-  <p>No todo está destinado a ser encontrado.</p>
+  <p>No todo está destinado a ser encontrado.<br>— A</p>
   <button onclick="pedirCodigo()">ENTRAR</button>
 </div>
 
-<!-- CONTENIDO REAL -->
+<!-- CONTENIDO SECRETO -->
 <div class="contenedor">
   <h1>ARCHIVOS</h1>
 
@@ -76,7 +118,7 @@
 
   <img src="foto1.jpg">
 
-  <p>— M</p>
+  <p>— A</p>
 </div>
 
 </body>
