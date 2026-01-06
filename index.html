@@ -9,23 +9,13 @@
     background-color: black;
     color: #e0e0e0;
     font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
     margin: 0;
     padding: 0;
-  }
-
-  .pantalla-falsa, .contenedor {
-    max-width: 600px;
-    margin: auto;
-    padding-top: 150px;
-    display: none;
-  }
-
-  .pantalla-falsa {
-    display: block;
+    overflow-x: hidden;
   }
 
   h1 {
+    text-align: center;
     font-size: 18px;
     letter-spacing: 3px;
     font-weight: normal;
@@ -46,17 +36,35 @@
     letter-spacing: 2px;
   }
 
-  video, img {
-    width: 100%;
-    margin-top: 30px;
+  .pantalla-falsa {
+    text-align: center;
+    padding-top: 150px;
+  }
+
+  .contenedor {
+    display: none;
+    padding: 50px 20px;
+  }
+
+  /* MURAL DESORDENADO */
+  .mural {
+    position: relative;
+    height: 800px;
+    margin-top: 50px;
+  }
+
+  .mural img,
+  .mural video {
+    position: absolute;
+    width: 200px;
     border: 1px solid #222;
+    opacity: 0.85;
   }
 </style>
 
 <script>
   let intentos = 0;
 
-  // PUEDES CAMBIAR O AGREGAR CÓDIGOS AQUÍ
   const codigosValidos = ["MAYA", "ARCHIVOS", "SECRETO", "A"];
 
   const mensajes = [
@@ -64,17 +72,13 @@
     "Te estoy observando.<br>— A",
     "Sabes exactamente lo que hiciste.<br>— A",
     "Creíste que nadie lo notaría?<br>— A",
-    "Algunos secretos no te pertenecen.<br>— A",
     "Esto no ha terminado.<br>— A"
   ];
 
   function pedirCodigo() {
     let codigo = prompt("Introduce el código");
 
-    if (
-      codigo &&
-      codigosValidos.includes(codigo.trim().toUpperCase())
-    ) {
+    if (codigo && codigosValidos.includes(codigo.trim().toUpperCase())) {
       document.querySelector(".pantalla-falsa").style.display = "none";
       document.querySelector(".contenedor").style.display = "block";
     } else {
@@ -108,17 +112,23 @@
   <button onclick="pedirCodigo()">ENTRAR</button>
 </div>
 
-<!-- CONTENIDO SECRETO -->
+<!-- CONTENIDO -->
 <div class="contenedor">
   <h1>ARCHIVOS</h1>
 
-  <video controls>
-    <source src="video1.mp4" type="video/mp4">
-  </video>
+  <div class="mural">
+    <!-- SOLO CAMBIA LOS NOMBRES DE LOS ARCHIVOS -->
+    <img src="foto1.jpg" style="top:40px; left:20px; transform:rotate(-6deg)">
+    <img src="foto2.jpg" style="top:220px; left:120px; transform:rotate(5deg)">
+    <img src="foto3.jpg" style="top:100px; left:350px; transform:rotate(-10deg)">
+    <img src="foto4.jpg" style="top:360px; left:260px; transform:rotate(8deg)">
 
-  <img src="foto1.jpg">
+    <video controls style="top:420px; left:60px; transform:rotate(-4deg)">
+      <source src="video1.mp4" type="video/mp4">
+    </video>
+  </div>
 
-  <p>— A</p>
+  <p style="text-align:center; margin-top:60px;">— A</p>
 </div>
 
 </body>
