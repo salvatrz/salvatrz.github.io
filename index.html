@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>...</title>
+
+<style>
+  body {
+    background-color: black;
+    color: #e0e0e0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contenedor {
+    max-width: 600px;
+    margin: auto;
+    padding-top: 100px;
+  }
+
+  h1 {
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  video, img {
+    width: 100%;
+    margin-top: 30px;
+    border: 1px solid #222;
+  }
+</style>
+
+<script>
+  let codigo = prompt("Introduce el código");
+
+  if (codigo !== "80z00") {
+    document.body.innerHTML =
+      "<h2 style='margin-top:150px;'>Acceso denegado</h2>";
+  }
+</script>
+
+</head>
+
+<body>
+<div class="contenedor">
+
+<h1>ARCHIVOS</h1>
+<p>No todo está destinado a ser encontrado.</p>
+
+<!-- VIDEO -->
+<video controls>
+  <source src="video1.mp4" type="video/mp4">
+</video>
+
+<!-- IMAGEN -->
+<img src="foto1.jpg">
+
+<p>— M</p>
+
+</div>
+</body>
+</html>
