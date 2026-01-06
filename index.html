@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>...</title>
+<title>ARCHIVOS</title>
 
 <style>
   body {
@@ -14,21 +14,25 @@
     padding: 0;
   }
 
-  .contenedor {
+  .pantalla-falsa, .contenedor {
     max-width: 600px;
     margin: auto;
-    padding-top: 100px;
+    padding-top: 150px;
+    display: none;
   }
 
-  h1 {
-    font-size: 18px;
-    letter-spacing: 3px;
-    font-weight: normal;
+  .pantalla-falsa {
+    display: block;
   }
 
-  p {
-    font-size: 14px;
-    opacity: 0.8;
+  button {
+    margin-top: 30px;
+    background: black;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    padding: 10px 25px;
+    cursor: pointer;
+    letter-spacing: 2px;
   }
 
   video, img {
@@ -39,32 +43,41 @@
 </style>
 
 <script>
-  let codigo = prompt("Introduce el código");
+  function pedirCodigo() {
+    let codigo = prompt("Introduce el código");
 
-  if (codigo !== "80z00") {
-    document.body.innerHTML =
-      "<h2 style='margin-top:150px;'>Acceso denegado</h2>";
+    if (codigo === "MAYA") {
+      document.querySelector(".pantalla-falsa").style.display = "none";
+      document.querySelector(".contenedor").style.display = "block";
+    } else {
+      document.body.innerHTML =
+        "<h2 style='margin-top:150px;'>Acceso denegado</h2>";
+    }
   }
 </script>
-
 </head>
 
 <body>
-<div class="contenedor">
 
-<h1>ARCHIVOS</h1>
-<p>No todo está destinado a ser encontrado.</p>
-
-<!-- VIDEO -->
-<video controls>
-  <source src="video1.mp4" type="video/mp4">
-</video>
-
-<!-- IMAGEN -->
-<img src="foto1.jpg">
-
-<p>— M</p>
-
+<!-- PANTALLA FALSA -->
+<div class="pantalla-falsa">
+  <h1>ARCHIVOS</h1>
+  <p>No todo está destinado a ser encontrado.</p>
+  <button onclick="pedirCodigo()">ENTRAR</button>
 </div>
+
+<!-- CONTENIDO REAL -->
+<div class="contenedor">
+  <h1>ARCHIVOS</h1>
+
+  <video controls>
+    <source src="video1.mp4" type="video/mp4">
+  </video>
+
+  <img src="foto1.jpg">
+
+  <p>— M</p>
+</div>
+
 </body>
 </html>
